@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
   const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/yourusername' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername' },
-    { name: 'Twitter', url: 'https://twitter.com/yourusername' }
+    { name: 'GitHub', url: 'https://github.com/sujalsin' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/in/sujalsin' }
+    // { name: 'Twitter', url: 'https://twitter.com/yourusername' }
   ];
 
   return (
