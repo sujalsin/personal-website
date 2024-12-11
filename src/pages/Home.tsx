@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import CodeBreaker from '../components/Game/CodeBreaker';
+import GameSelector from '../components/Game/GameSelector';
 import AnimatedBackground from '../components/Background/AnimatedBackground';
 import { ScrollAnimation } from '../components/Animation/ScrollAnimations';
 import ProjectsSection from '../components/Projects/ProjectsSection';
@@ -77,18 +77,21 @@ const Home = () => {
         </div>
       </ScrollAnimation>
 
-      {/* Interactive Code Challenge Section */}
+      {/* Interactive Game Section */}
       <ScrollAnimation variant="fadeIn" className="py-20 relative">
         <AnimatedBackground variant="dark" />
         <div className="container-custom relative z-10">
           <ScrollAnimation variant="slideUp">
             <h2 className="heading-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
-              Code Challenge Arena
+              Let's Play a Game!
             </h2>
+            <p className="text-center text-white/60 mt-2">
+              Refresh the page to try a different game!
+            </p>
           </ScrollAnimation>
           <ScrollAnimation variant="slideIn" delay={0.2}>
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <CodeBreaker />
+            <div className="bg-gray-800/30 backdrop-blur-lg rounded-xl shadow-lg p-8">
+              <GameSelector />
             </div>
           </ScrollAnimation>
         </div>

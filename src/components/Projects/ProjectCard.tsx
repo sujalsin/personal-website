@@ -6,6 +6,21 @@ interface ProjectCardProps extends Project {
   onClick: () => void;
 }
 
+const getCategoryColor = (category: string) => {
+  switch (category) {
+    case 'Trading':
+      return 'text-green-300 bg-green-900/30';
+    case 'Systems':
+      return 'text-blue-300 bg-blue-900/30';
+    case 'Video':
+      return 'text-red-300 bg-red-900/30';
+    case 'ML':
+      return 'text-purple-300 bg-purple-900/30';
+    default:
+      return 'text-gray-300 bg-gray-900/30';
+  }
+};
+
 const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
@@ -31,7 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Content */}
       <div className="relative h-full p-6 flex flex-col">
         {/* Category Tag */}
-        <span className="inline-block px-3 py-1 text-sm font-medium text-purple-300 bg-purple-900/30 rounded-full">
+        <span className={`inline-block px-2.5 py-0.5 text-xs font-medium rounded-md w-fit ${getCategoryColor(category)}`}>
           {category}
         </span>
 

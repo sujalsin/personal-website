@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +16,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
     { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/#contact' }
+    { name: 'Contact', path: '/contact' }
   ];
 
   return (
@@ -53,18 +59,22 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
                 {navLinks.map((link) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.path}
-                    whileHover={{ y: -2 }}
-                    className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors relative group"
-                  >
-                    {link.name}
-                    <motion.div
-                      className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"
-                      layoutId="underline"
-                    />
-                  </motion.a>
+                  <motion.div key={link.name} whileHover={{ y: -2 }}>
+                    <Link
+                      to={link.path}
+                      className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors relative group ${
+                        location.pathname === link.path ? 'text-white' : ''
+                      }`}
+                    >
+                      {link.name}
+                      <motion.div
+                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-opacity ${
+                          location.pathname === link.path ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                        }`}
+                        layoutId="underline"
+                      />
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -107,15 +117,17 @@ const Navbar = () => {
             >
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {navLinks.map((link) => (
-                  <motion.a
+                  <Link
                     key={link.name}
-                    href={link.path}
-                    whileHover={{ x: 10 }}
-                    className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    to={link.path}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      location.pathname === link.path
+                        ? 'text-white bg-gray-700'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                    }`}
                   >
                     {link.name}
-                  </motion.a>
+                  </Link>
                 ))}
               </div>
             </motion.div>

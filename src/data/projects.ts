@@ -9,135 +9,111 @@ interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'Causal Trading Strategy',
+    title: 'Low-Latency Trading System',
     description: [
-      'Implemented advanced causal inference methods (DAGs, Propensity Score Matching, Instrumental Variables) for algorithmic trading, improving trading signal precision by 18%',
-      'Conducted research and statistical analysis to identify true causal relationships in financial data, refining monetization systems and boosting ROI by 12%',
-      'Enhanced risk management with dynamic position sizing and threshold-based filtering, reducing portfolio volatility by 15%'
+      'Developed a high-performance trading system in C++, achieving a 35% reduction in order execution latency',
+      'Implemented efficient TCP/IP networking protocols on Linux, ensuring robust real-time data processing',
+      'Integrated lock-free data structures and conducted comprehensive unit testing, enhancing system reliability'
     ],
-    date: 'November 2024',
+    date: 'December 2024',
     category: 'Trading',
-    technologies: ['Python', 'DAGs', 'Statistical Analysis', 'Risk Management'],
-    github: '#'
+    technologies: ['C++', 'Linux', 'TCP/IP', 'Multithreading'],
+    github: 'https://github.com/sujalsin/low_latency_trading'
   },
   {
-    title: 'Temporal and Heterogeneous Graph Neural Network',
+    title: 'Intelligent Video Compression',
     description: [
-      'Developed a THGNN model for stock price prediction, achieving a 10% improvement in prediction accuracy over traditional models',
-      'Engineered comprehensive technical indicators and constructed dynamic graphs for daily trading data, improving feature representation by 15%',
-      'Utilized multi-head attention mechanisms for temporal and graph-level attention, reducing prediction error by 12%'
-    ],
-    date: 'October 2024',
-    category: 'Trading',
-    technologies: ['Python', 'GNN', 'Deep Learning', 'Technical Analysis'],
-    github: '#'
-  },
-  {
-    title: 'Options Trading Platform',
-    description: [
-      'Built a high-performance options trading platform integrating C++ and Python, reducing computation time by 40%',
-      'Implemented options pricing models (Black-Scholes, Binomial Tree, Monte Carlo simulations), improving pricing accuracy by 12%',
-      'Integrated technical analysis tools and live market data, enhancing trading decision-making and increasing portfolio returns by 15%'
-    ],
-    date: 'August 2024',
-    category: 'Trading',
-    technologies: ['C++', 'Python', 'Financial Models', 'Technical Analysis'],
-    github: '#'
-  },
-  {
-    title: 'FRP Trading System',
-    description: [
-      'Developed a high-performance automated trading system combining OCaml and C++ using Functional Reactive Programming',
-      'Designed a type-safe risk management module in OCaml, increasing system reliability',
-      'Optimized performance-critical algorithms, enhancing execution speed by 30%'
-    ],
-    date: 'June 2024',
-    category: 'Trading',
-    technologies: ['OCaml', 'C++', 'FRP', 'Risk Management'],
-    github: '#'
-  },
-  {
-    title: 'FinData Engine',
-    description: [
-      'Created a high-performance financial data storage engine with hybrid in-memory and on-disk architecture',
-      'Integrated Rust-accelerated numerical operations and advanced compression techniques',
-      'Designed a custom time-series indexing system optimized for financial data'
-    ],
-    date: 'November 2023',
-    category: 'Trading',
-    technologies: ['Rust', 'Time-series Database', 'Data Compression'],
-    github: '#'
-  },
-  {
-    title: 'Video Compression Optimizer',
-    description: [
-      'Developed a high-performance video compression tool integrating C++ and Python, achieving 30% reduction in data size',
-      'Implemented machine learning models using TensorFlow to predict optimal encoding parameters',
-      'Conducted comprehensive quality assessments using PSNR and SSIM metrics'
+      'Developed a high-performance video compression tool integrating C++ and Python',
+      'Achieved 30% reduction in file size without significant quality loss using ML-based optimization',
+      'Implemented real-time processing capabilities for live video streaming applications'
     ],
     date: 'November 2024',
     category: 'Video',
-    technologies: ['C++', 'Python', 'FFmpeg', 'OpenCV', 'TensorFlow'],
-    github: '#'
+    technologies: ['C++', 'Python', 'OpenCV', 'TensorFlow'],
+    github: 'https://github.com/sujalsin/video_compression_optimizer'
   },
   {
-    title: 'Content Delivery Network Simulator',
+    title: 'Lock-Free Concurrent Queue',
     description: [
-      'Engineered a sophisticated CDN simulator with machine learning-based traffic prediction',
-      'Integrated an LRU caching system using Redis, increasing cache hit rates by 35%',
-      'Implemented real-time metrics collection using Prometheus and Grafana'
+      'Developed a lock-free concurrent queue in Rust, reducing latency by 45% and increasing throughput by 60%',
+      'Eliminated data races and deadlocks using atomic operations and lock-free algorithms',
+      'Achieved formal verification using Coq, ensuring thread safety and correctness'
     ],
     date: 'October 2024',
     category: 'Systems',
-    technologies: ['Python', 'Redis', 'Prometheus', 'Grafana'],
-    github: '#'
+    technologies: ['Rust', 'Coq', 'Concurrent Programming'],
+    github: 'https://github.com/sujalsin/concurrent-verification'
   },
   {
     title: 'HVS Video Pipeline',
     description: [
       'Designed an advanced video processing pipeline inspired by the Human Visual System',
-      'Developed a custom lightweight CNN for saliency detection',
-      'Implemented comprehensive quality assessment metrics'
+      'Developed a custom lightweight CNN for saliency detection and frame analysis',
+      'Optimized pipeline performance for high-resolution 4K footage with minimal latency'
     ],
-    date: 'August 2024',
+    date: 'September 2024',
     category: 'Video',
-    technologies: ['PyTorch', 'OpenCV', 'FFmpeg', 'Deep Learning'],
-    github: '#'
+    technologies: ['Python', 'OpenCV', 'PyTorch', 'FFmpeg'],
+    github: 'https://github.com/sujalsin/hvs_video_pipeline'
   },
   {
-    title: 'DSL for Quantum Computing',
+    title: 'GPU-Accelerated SQL Operators',
     description: [
-      'Designed and implemented a type-safe DSL in Haskell for quantum algorithms',
-      'Developed core components for quantum state management and interpreter system',
-      'Enabled accurate simulation of quantum operations'
-    ],
-    date: 'November 2024',
-    category: 'Systems',
-    technologies: ['Haskell', 'Quantum Computing', 'DSL'],
-    github: '#'
-  },
-  {
-    title: 'Lock-Free Queue with Formal Verification',
-    description: [
-      'Implemented the Michael-Scott lock-free queue in Rust',
-      'Formally verified thread safety and memory safety using Coq and Loom',
-      'Optimized performance achieving 30% reduction in latency'
-    ],
-    date: 'October 2024',
-    category: 'Systems',
-    technologies: ['Rust', 'Coq', 'Formal Verification'],
-    github: '#'
-  },
-  {
-    title: 'Secure Verifiable Voting System',
-    description: [
-      'Implemented a dual-language secure voting system using homomorphic encryption',
-      'Formally verified security properties using Coq and ProVerif',
-      'Achieved high performance through optimized cryptographic operations'
+      'Implemented high-performance SQL operators using CUDA, achieving up to 20x speedup',
+      'Optimized memory access patterns and concurrency using shared memory and CUDA streams',
+      'Integrated GPU-accelerated operators with existing SQL engines'
     ],
     date: 'August 2024',
     category: 'Systems',
-    technologies: ['Rust', 'Go', 'Cryptography', 'Formal Verification'],
-    github: '#'
+    technologies: ['CUDA', 'C++', 'SQL', 'GPU Programming'],
+    github: 'https://github.com/sujalsin/gpu-sql-operators'
+  },
+  {
+    title: 'Real-Time Streaming Monitor',
+    description: [
+      'Developed a real-time performance monitoring tool for streaming applications',
+      'Implemented dashboard visualizations with Grafana for actionable insights',
+      'Reduced monitoring overhead by 20% while enhancing system reliability'
+    ],
+    date: 'July 2024',
+    category: 'Video',
+    technologies: ['Go', 'Prometheus', 'Grafana', 'Time-series DB'],
+    github: 'https://github.com/sujalsin/streaming-monitor'
+  },
+  {
+    title: 'Adaptive JIT Compiler with ML',
+    description: [
+      'Designed an adaptive just-in-time compiler using C++ and TensorFlow',
+      'Incorporated machine learning-based optimization for dynamic code generation',
+      'Enhanced execution speed by 25% and reduced compilation overhead by 30%'
+    ],
+    date: 'June 2024',
+    category: 'Systems',
+    technologies: ['C++', 'TensorFlow', 'Compiler Design', 'Machine Learning'],
+    github: 'https://github.com/sujalsin/adaptive-jit-ml'
+  },
+  {
+    title: 'Ensemble Deep RL Trading Platform',
+    description: [
+      'Developed an ensemble deep reinforcement learning trading platform',
+      'Improved trading strategy performance by 20% using multiple RL agents',
+      'Conducted extensive backtesting and simulation on historical market data'
+    ],
+    date: 'May 2024',
+    category: 'Trading',
+    technologies: ['Python', 'PyTorch', 'Reinforcement Learning', 'Trading'],
+    github: 'https://github.com/sujalsin/ensemble_trading'
+  },
+  {
+    title: 'RISC-V Processor Core',
+    description: [
+      'Designed a RISC-V processor core in C++ and Verilog, supporting the RV32I instruction set',
+      'Achieved 20% higher performance compared to baseline implementations',
+      'Implemented multithreaded processing capabilities and optimized pipeline stages'
+    ],
+    date: 'April 2024',
+    category: 'Systems',
+    technologies: ['C++', 'Verilog', 'RISC-V', 'Computer Architecture'],
+    github: 'https://github.com/sujalsin/riscv_core'
   }
 ];

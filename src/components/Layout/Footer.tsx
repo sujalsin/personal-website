@@ -1,12 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import { scrollToTop } from '../../hooks/useScrollToTop';
 
 const Footer = () => {
+  const location = useLocation();
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/sujalsin' },
     { name: 'LinkedIn', url: 'https://linkedin.com/in/sujalsin' }
     // { name: 'Twitter', url: 'https://twitter.com/yourusername' }
   ];
+
+  const quickLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' }
+  ];
+
+  const handleLinkClick = (path: string) => {
+    // If we're already on the page, just scroll to top
+    if (location.pathname === path) {
+      scrollToTop();
+    }
+  };
 
   return (
     <footer className="relative z-10">
@@ -15,12 +32,14 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Brand */}
             <div className="flex flex-col items-center md:items-start">
-              <motion.h3 
-                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500"
-                whileHover={{ scale: 1.05 }}
-              >
-                Sujal
-              </motion.h3>
+              <Link to="/" onClick={() => handleLinkClick('/')}>
+                <motion.h3 
+                  className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Sujal
+                </motion.h3>
+              </Link>
               <p className="mt-2 text-gray-400 text-sm text-center md:text-left">
                 Building innovative solutions with modern technologies
               </p>
@@ -30,15 +49,19 @@ const Footer = () => {
             <div className="flex flex-col items-center md:items-start">
               <h3 className="text-white font-semibold mb-4">Quick Links</h3>
               <div className="flex flex-col space-y-2">
-                {['Home', 'Projects', 'About', 'Contact'].map((link) => (
-                  <motion.a
-                    key={link}
-                    href={`#${link.toLowerCase()}`}
+                {quickLinks.map((link) => (
+                  <motion.div
+                    key={link.name}
                     whileHover={{ x: 5 }}
-                    className="text-gray-400 hover:text-white transition-colors"
                   >
-                    {link}
-                  </motion.a>
+                    <Link
+                      to={link.path}
+                      className="text-gray-400 hover:text-white transition-colors"
+                      onClick={() => handleLinkClick(link.path)}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -66,7 +89,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="mt-8 pt-8 border-t border-gray-800">
             <p className="text-center text-gray-400 text-sm">
-              © {new Date().getFullYear()} Sujal. All rights reserved.
+              &copy; {new Date().getFullYear()} Sujal. All rights reserved.
             </p>
           </div>
         </div>
