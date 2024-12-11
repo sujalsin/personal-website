@@ -46,19 +46,19 @@ const Contact = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/sujalsin',
       icon: FaGithub,
       color: 'hover:text-gray-400'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/yourusername',
+      url: 'https://linkedin.com/in/sujalsin',
       icon: FaLinkedin,
       color: 'hover:text-blue-400'
     },
     {
       name: 'Email',
-      url: 'mailto:your.email@example.com',
+      url: 'mailto:sujals2144@gmail.com',
       icon: FaEnvelope,
       color: 'hover:text-red-400'
     }

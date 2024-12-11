@@ -1,6 +1,8 @@
 # Personal Portfolio Website
 
-A modern, interactive portfolio website built with React, TypeScript, and Tailwind CSS. Features a collection of engaging web games and a beautiful, responsive design.
+A modern, interactive portfolio website built with React, TypeScript, and Tailwind CSS. Features a collection of engaging web games, project showcase, and a beautiful, responsive design.
+
+🌐 **Live Demo**: [https://sujal-singh.vercel.app](https://sujal-singh.vercel.app)
 
 ## 🎮 Interactive Games
 
@@ -38,19 +40,20 @@ All games feature:
 
 ## 🚀 Technologies Used
 
-- **Frontend Framework**: React with TypeScript
+- **Frontend Framework**: React 18 with TypeScript
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Build Tool**: Vite
 - **Router**: React Router v6
 - **Audio**: Web Audio API
+- **Deployment**: Vercel
 - **State Management**: React Hooks
 
 ## 🛠️ Setup and Installation
 
 1. Clone the repository:
    ```bash
-   git clone [your-repo-url]
+   git clone https://github.com/sujalsin/personal-website.git
    ```
 
 2. Install dependencies:
@@ -76,6 +79,9 @@ All games feature:
 - **Dark Theme**: Eye-friendly dark theme with gradient accents
 - **Smooth Navigation**: Client-side routing with scroll restoration
 - **Performance Optimized**: Fast loading times and smooth animations
+- **Contact Form**: Interactive contact form with validation
+- **Project Showcase**: Detailed project cards with modal views
+- **Social Links**: Quick access to GitHub, LinkedIn, and email
 
 ## 📁 Project Structure
 
@@ -83,10 +89,10 @@ All games feature:
 src/
 ├── components/
 │   ├── Game/           # Game components
-│   ├── Layout/         # Layout components
-│   ├── Background/     # Background effects
-│   └── Projects/       # Project showcase
-├── pages/              # Route pages
+│   ├── Layout/         # Layout components (Navbar, Footer)
+│   ├── Background/     # Background effects (Game of Life)
+│   └── Projects/       # Project showcase components
+├── pages/              # Route pages (Home, About, Contact)
 ├── hooks/              # Custom React hooks
 ├── utils/              # Utility functions
 └── styles/            # Global styles
@@ -99,34 +105,37 @@ src/
 - Smooth page transitions
 - Interactive hover states
 - Consistent dark theme
-- Mobile-first approach
-
-## 🔧 Development
-
-- **Code Style**: ESLint and Prettier configuration
-- **Type Safety**: TypeScript for better development experience
-- **Hot Reload**: Fast refresh in development
-- **Component Structure**: Modular and reusable components
+- Responsive grid layouts
+- Animated background patterns
 
 ## 📱 Responsive Design
 
-- Mobile-first approach
-- Tablet and desktop optimized
-- Adaptive game controls
-- Flexible layout system
+The website is fully responsive and optimized for:
+- Desktop computers
+- Laptops
+- Tablets
+- Mobile phones
 
-## 🚀 Performance
+## 🔒 Security
 
+- Protected API endpoints
+- Secure form submissions
+- No sensitive data exposure
+- Proper CORS configuration
+- Secure external links
+
+## 📈 Performance
+
+- Optimized asset loading
 - Code splitting
-- Lazy loading
-- Optimized assets
-- Smooth animations
-- Fast page transitions
-
-## 📄 License
-
-MIT License - feel free to use this code for your own projects!
+- Lazy loading of components
+- Efficient state management
+- Minimized bundle size
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -7,21 +7,33 @@ const About = () => {
     {
       title: "Software Engineer Intern",
       company: "S.S. Enterprises",
-      period: "2024 - 2024",
-      description: "Working on full-stack development using modern technologies."
+      period: "June 2024 - October 2024",
+      description: "Developed and implemented automated billing & quotation management system, significantly improving efficiency and accuracy."
     },
     {
       title: "Research Assistant",
       company: "Buffalo NeuroImaging Analysis Center",
-      period: "2022 - 2023",
-      description: "Working on full-stack development using modern technologies."
+      period: "April 2022 - January 2023",
+      description: [
+        "Created innovative systems for medical image annotation, boosting processing speed and accuracy while enhancing diagnostic reliability.",
+        "Co-authored research paper: ",
+        <a 
+          key="paper-link"
+          href="https://www.researchsquare.com/article/rs-3328936/v1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-indigo-400 hover:text-indigo-300 underline"
+        >
+          View Publication
+        </a>
+      ]
     },
-    {
-      title: "Research Assistant",
-      company: "University at Buffalo - xLab",
-      period: "2022 - 2022",
-      description: "Working on full-stack development using modern technologies."
-    },
+    // {
+    //   title: "Research Assistant",
+    //   company: "University at Buffalo - xLab",
+    //   period: "2022 - 2022",
+    //   description: "Working on full-stack development using modern technologies."
+    // },
     // Add more experiences as needed
   ];
 
@@ -118,7 +130,21 @@ const About = () => {
                 <h3 className="text-xl font-medium text-white/70">{exp.title}</h3>
                 <p className="text-indigo-400/80">{exp.company}</p>
                 <p className="text-gray-400/70 text-sm">{exp.period}</p>
-                <p className="text-gray-300/80 mt-2">{exp.description}</p>
+                {Array.isArray(exp.description) ? (
+                  <div className="text-gray-300/80 mt-2">
+                    {exp.description.map((desc, descIndex) => (
+                      <React.Fragment key={descIndex}>
+                        {typeof desc === 'string' ? (
+                          <p>{desc}</p>
+                        ) : (
+                          desc
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-gray-300/80 mt-2">{exp.description}</p>
+                )}
               </div>
             ))}
           </div>

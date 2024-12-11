@@ -1,16 +1,20 @@
-interface Project {
+export interface Project {
   title: string;
-  description: string[];
-  date: string;
-  category: 'Trading' | 'Video' | 'Systems';
+  description: string;
+  longDescription?: string[];
   technologies: string[];
   github?: string;
+  demo?: string;
+  date: string;
+  category: string;
+  image?: string;
 }
 
 export const projects: Project[] = [
   {
     title: 'Low-Latency Trading System',
-    description: [
+    description: 'Developed a high-performance trading system in C++, achieving a 35% reduction in order execution latency',
+    longDescription: [
       'Developed a high-performance trading system in C++, achieving a 35% reduction in order execution latency',
       'Implemented efficient TCP/IP networking protocols on Linux, ensuring robust real-time data processing',
       'Integrated lock-free data structures and conducted comprehensive unit testing, enhancing system reliability'
@@ -22,7 +26,8 @@ export const projects: Project[] = [
   },
   {
     title: 'Intelligent Video Compression',
-    description: [
+    description: 'Developed a high-performance video compression tool integrating C++ and Python',
+    longDescription: [
       'Developed a high-performance video compression tool integrating C++ and Python',
       'Achieved 30% reduction in file size without significant quality loss using ML-based optimization',
       'Implemented real-time processing capabilities for live video streaming applications'
@@ -34,7 +39,8 @@ export const projects: Project[] = [
   },
   {
     title: 'Lock-Free Concurrent Queue',
-    description: [
+    description: 'Developed a lock-free concurrent queue in Rust, reducing latency by 45% and increasing throughput by 60%',
+    longDescription: [
       'Developed a lock-free concurrent queue in Rust, reducing latency by 45% and increasing throughput by 60%',
       'Eliminated data races and deadlocks using atomic operations and lock-free algorithms',
       'Achieved formal verification using Coq, ensuring thread safety and correctness'
@@ -46,7 +52,8 @@ export const projects: Project[] = [
   },
   {
     title: 'HVS Video Pipeline',
-    description: [
+    description: 'Designed an advanced video processing pipeline inspired by the Human Visual System',
+    longDescription: [
       'Designed an advanced video processing pipeline inspired by the Human Visual System',
       'Developed a custom lightweight CNN for saliency detection and frame analysis',
       'Optimized pipeline performance for high-resolution 4K footage with minimal latency'
@@ -58,7 +65,8 @@ export const projects: Project[] = [
   },
   {
     title: 'GPU-Accelerated SQL Operators',
-    description: [
+    description: 'Implemented high-performance SQL operators using CUDA, achieving up to 20x speedup',
+    longDescription: [
       'Implemented high-performance SQL operators using CUDA, achieving up to 20x speedup',
       'Optimized memory access patterns and concurrency using shared memory and CUDA streams',
       'Integrated GPU-accelerated operators with existing SQL engines'
@@ -70,7 +78,8 @@ export const projects: Project[] = [
   },
   {
     title: 'Real-Time Streaming Monitor',
-    description: [
+    description: 'Developed a real-time performance monitoring tool for streaming applications',
+    longDescription: [
       'Developed a real-time performance monitoring tool for streaming applications',
       'Implemented dashboard visualizations with Grafana for actionable insights',
       'Reduced monitoring overhead by 20% while enhancing system reliability'
@@ -82,7 +91,8 @@ export const projects: Project[] = [
   },
   {
     title: 'Adaptive JIT Compiler with ML',
-    description: [
+    description: 'Designed an adaptive just-in-time compiler using C++ and TensorFlow',
+    longDescription: [
       'Designed an adaptive just-in-time compiler using C++ and TensorFlow',
       'Incorporated machine learning-based optimization for dynamic code generation',
       'Enhanced execution speed by 25% and reduced compilation overhead by 30%'
@@ -94,7 +104,8 @@ export const projects: Project[] = [
   },
   {
     title: 'Ensemble Deep RL Trading Platform',
-    description: [
+    description: 'Developed an ensemble deep reinforcement learning trading platform',
+    longDescription: [
       'Developed an ensemble deep reinforcement learning trading platform',
       'Improved trading strategy performance by 20% using multiple RL agents',
       'Conducted extensive backtesting and simulation on historical market data'
@@ -106,7 +117,8 @@ export const projects: Project[] = [
   },
   {
     title: 'RISC-V Processor Core',
-    description: [
+    description: 'Designed a RISC-V processor core in C++ and Verilog, supporting the RV32I instruction set',
+    longDescription: [
       'Designed a RISC-V processor core in C++ and Verilog, supporting the RV32I instruction set',
       'Achieved 20% higher performance compared to baseline implementations',
       'Implemented multithreaded processing capabilities and optimized pipeline stages'
