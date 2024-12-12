@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '../../data/projects';
 
-interface ProjectCardProps extends Project {
+interface ProjectCardProps {
+  project: Project;
   onClick: () => void;
 }
 
@@ -21,17 +22,11 @@ const getCategoryColor = (category: string) => {
   }
 };
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  title,
-  description,
-  technologies,
-  category,
-  onClick,
-}) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   return (
     <motion.div
       onClick={onClick}
-      className="group relative bg-gray-900 rounded-2xl overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 h-full"
+      className="group relative bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 h-full"
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
@@ -46,33 +41,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Content */}
       <div className="relative h-full p-6 flex flex-col">
         {/* Category Tag */}
-        <span className={`inline-block px-2.5 py-0.5 text-xs font-medium rounded-md w-fit ${getCategoryColor(category)}`}>
-          {category}
+        <span className={`inline-block px-2.5 py-0.5 text-xs font-medium rounded-md w-fit ${getCategoryColor(project.category)}`}>
+          {project.category}
         </span>
 
         {/* Title */}
         <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors mt-4">
-          {title}
+          {project.title}
         </h3>
 
         {/* Description */}
         <p className="text-gray-400 line-clamp-3 mt-4 flex-grow">
-          {description}
+          {project.description}
         </p>
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mt-6">
-          {technologies.slice(0, 3).map((tech) => (
+          {project.technologies.slice(0, 3).map((tech, index) => (
             <span
-              key={tech}
-              className="px-2 py-1 text-sm text-gray-300 bg-gray-800 rounded-md"
+              key={`${tech}-${index}`}
+              className="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 backdrop-blur-sm rounded-md"
             >
               {tech}
             </span>
           ))}
-          {technologies.length > 3 && (
-            <span className="px-2 py-1 text-sm text-gray-300 bg-gray-800 rounded-md">
-              +{technologies.length - 3} more
+          {project.technologies.length > 3 && (
+            <span className="px-2 py-1 text-sm text-gray-300 bg-gray-800/50 backdrop-blur-sm rounded-md">
+              +{project.technologies.length - 3} more
             </span>
           )}
         </div>

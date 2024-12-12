@@ -21,43 +21,38 @@ const ProjectsSection: React.FC = () => {
 
   const categoryIcons = {
     All: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     ),
     Trading: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
       </svg>
     ),
     Video: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
       </svg>
     ),
     Systems: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
   };
 
   const categoryDescriptions = {
-    All: 'Explore all my projects across different domains',
-    Trading: 'Algorithmic trading and financial market analysis projects',
+    All: 'View all my projects',
+    Trading: 'Algorithmic trading and financial systems',
     Video: 'Video processing and streaming applications',
     Systems: 'Low-level systems programming and optimization',
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
-      </div>
-
+    <section className="py-20 text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <ScrollAnimation variant="slideUp">
+        <ScrollAnimation key="header" variant="slideUp">
           <h2 className="text-5xl font-bold text-center mb-4 bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
             Featured Projects
           </h2>
@@ -66,7 +61,7 @@ const ProjectsSection: React.FC = () => {
           </p>
         </ScrollAnimation>
 
-        <ScrollAnimation variant="fadeIn" delay={0.2}>
+        <ScrollAnimation key="categories" variant="fadeIn" delay={0.2}>
           <div className="flex flex-col items-center mb-16">
             <div className="flex justify-center gap-4 mb-6 flex-wrap">
               {categories.map((category) => (
@@ -78,7 +73,7 @@ const ProjectsSection: React.FC = () => {
                   className={`px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                     selectedCategory === category
                       ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30'
-                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                      : 'bg-gray-800/50 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -115,13 +110,13 @@ const ProjectsSection: React.FC = () => {
           >
             {filteredProjects.map((project, index) => (
               <ScrollAnimation
-                key={project.title}
+                key={project.id}
                 variant="fadeIn"
                 delay={index * 0.1}
               >
                 <div className="h-[420px]">
                   <ProjectCard
-                    {...project}
+                    project={project}
                     onClick={() => setSelectedProject(project)}
                   />
                 </div>
@@ -130,17 +125,9 @@ const ProjectsSection: React.FC = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Project Modal */}
-        {selectedProject && (
-          <ProjectModal
-            {...selectedProject}
-            isOpen={!!selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
-
         {filteredProjects.length === 0 && (
           <motion.div
+            key="no-projects"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-20"
@@ -160,6 +147,14 @@ const ProjectsSection: React.FC = () => {
               View all projects instead
             </motion.button>
           </motion.div>
+        )}
+
+        {selectedProject && (
+          <ProjectModal
+            project={selectedProject}
+            isOpen={!!selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
         )}
       </div>
     </section>

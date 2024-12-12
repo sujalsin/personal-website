@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,11 +22,34 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollToContact: true } });
+    } else {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        const yOffset = -80;
+        const y = contactSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleResumeClick = () => {
+    window.open('/resume.pdf', '_blank');
+  };
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
     { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' }
+    { 
+      name: 'Contact',
+      path: '#contact',
+      onClick: handleContactClick
+    }
   ];
 
   return (
@@ -59,49 +83,80 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
                 {navLinks.map((link) => (
-                  <motion.div key={link.name} whileHover={{ y: -2 }}>
-                    <Link
-                      to={link.path}
-                      className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors relative group ${
-                        location.pathname === link.path ? 'text-white' : ''
-                      }`}
-                    >
-                      {link.name}
-                      <motion.div
-                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-opacity ${
-                          location.pathname === link.path ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  <motion.div
+                    key={link.name}
+                    whileHover={{ y: -2 }}
+                  >
+                    {link.onClick ? (
+                      <a
+                        href={link.path}
+                        onClick={link.onClick}
+                        className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors relative group ${
+                          location.pathname === link.path
+                            ? 'text-white'
+                            : ''
                         }`}
-                        layoutId="underline"
-                      />
-                    </Link>
+                      >
+                        {link.name}
+                        <motion.div
+                          className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-opacity ${
+                            location.pathname === link.path ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                          }`}
+                          layoutId="underline"
+                        />
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        className={`text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors relative group ${
+                          location.pathname === link.path
+                            ? 'text-white'
+                            : ''
+                        }`}
+                      >
+                        {link.name}
+                        <motion.div
+                          className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-opacity ${
+                            location.pathname === link.path ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                          }`}
+                          layoutId="underline"
+                        />
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
+                <button
+                  onClick={handleResumeClick}
+                  className="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors"
+                >
+                  Resume
+                </button>
               </div>
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <motion.button
-                whileTap={{ scale: 0.95 }}
+              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                aria-expanded="false"
               >
                 <span className="sr-only">Open main menu</span>
-                <div className="relative w-6 h-6">
-                  <motion.span
-                    animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                    className="absolute w-full h-0.5 bg-current transform transition-transform"
-                  />
-                  <motion.span
-                    animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                    className="absolute w-full h-0.5 bg-current top-2.5"
-                  />
-                  <motion.span
-                    animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 5 }}
-                    className="absolute w-full h-0.5 bg-current transform transition-transform"
-                  />
-                </div>
-              </motion.button>
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -117,18 +172,42 @@ const Navbar = () => {
             >
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      location.pathname === link.path
-                        ? 'text-white bg-gray-700'
-                        : 'text-gray-300 hover:text-white hover:bg-gray-700'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                  <div key={link.name}>
+                    {link.onClick ? (
+                      <a
+                        href={link.path}
+                        onClick={link.onClick}
+                        className={`block px-3 py-2 rounded-md text-base font-medium ${
+                          location.pathname === link.path
+                            ? 'text-white bg-gray-700'
+                            : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                        }`}
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        className={`block px-3 py-2 rounded-md text-base font-medium ${
+                          location.pathname === link.path
+                            ? 'text-white bg-gray-700'
+                            : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
+                  </div>
                 ))}
+                <button
+                  onClick={() => {
+                    handleResumeClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-3 py-2 text-base font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 transition-colors"
+                >
+                  Resume
+                </button>
               </div>
             </motion.div>
           )}
